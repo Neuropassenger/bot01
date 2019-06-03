@@ -36,8 +36,6 @@ class Bot01:
 
 	def get_last_update(self):
 		get_result = self.get_updates()
-		print(get_result)
-		print(len(get_result))
 
 		if len(get_result) > 0:
 			last_update = get_result[-1]
@@ -73,9 +71,10 @@ def main():
 			last_update = greet_bot.get_last_update()
 		except NoUpdatesException as no:
 			continue
+		else:
+			print(last_update)
 
 		last_update_id = last_update['update_id']
-		print(last_update)
 		last_chat_text = last_update['message']['text']
 		last_chat_id = last_update['message']['chat']['id']
 		last_chat_name = last_update['message']['from']['first_name']
