@@ -14,8 +14,6 @@ class NoUpdatesException(Exception):
 	
 	def __init__(self, length, atleast):
 		Exception.__init__(self)
-		self.length = length
-		self.atleast = atleast
 
 class Bot01:
 
@@ -42,10 +40,11 @@ class Bot01:
 
 		if len(get_result) > 0:
 			last_update = get_result[-1]
-		elif len(get_result) == 0:
-			raise NoUpdatesException(len(get_result), 1)
 		else:
 			last_update = get_result[len(get_result)-1]
+
+		if 'text' not in get_result.keys()
+			raise NoUpdatesException()
 
 		return last_update
 
