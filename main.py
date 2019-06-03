@@ -38,12 +38,11 @@ class Bot01:
 
 	def get_last_update(self):
 		get_result = self.get_updates()
-		raise 
 
 		if len(get_result) > 0:
 			last_update = get_result[-1]
 		elif len(get_result) == 0:
-
+			raise NoUpdatesException(len(get_result), 1)
 		else:
 			last_update = get_result[len(get_result)-1]
 
