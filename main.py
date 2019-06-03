@@ -43,7 +43,7 @@ class Bot01:
 		else:
 			last_update = get_result[len(get_result)-1]
 
-		if 'text' not in get_result.keys()
+		if 'text' not in get_result.keys():
 			raise NoUpdatesException()
 
 		return last_update
