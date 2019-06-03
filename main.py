@@ -10,6 +10,13 @@ Version: 0.1.0
 import requests
 import datetime
 
+class NoUpdatesException(Exception):
+	
+	def __init__(self, length, atleast):
+		Exception.__init__(self)
+		self.length = length
+		self.atleast = atleast
+
 class Bot01:
 
 	def __init__(self, token):
@@ -31,11 +38,12 @@ class Bot01:
 
 	def get_last_update(self):
 		get_result = self.get_updates()
-		print(get_result)
-		print(len(get_result))
+		raise 
 
 		if len(get_result) > 0:
 			last_update = get_result[-1]
+		elif len(get_result) == 0:
+
 		else:
 			last_update = get_result[len(get_result)-1]
 
@@ -61,7 +69,10 @@ def main():
 	while True:
 		greet_bot.get_updates(new_offset)
 
-		last_update = greet_bot.get_last_update()
+		try:
+			last_update = greet_bot.get_last_update()
+		except: NoUpdatesException as no:
+			continue
 
 		last_update_id = last_update['update_id']
 		last_chat_text = last_update['message']['text']
