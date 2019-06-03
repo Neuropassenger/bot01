@@ -12,7 +12,7 @@ import datetime
 
 class NoUpdatesException(Exception):
 	
-	def __init__(self, length, atleast):
+	def __init__(self):
 		Exception.__init__(self)
 
 class Bot01:
