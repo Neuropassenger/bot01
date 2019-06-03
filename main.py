@@ -9,6 +9,7 @@ Version: 0.1.0
 
 import requests
 import datetime
+import json
 
 class NoUpdatesException(Exception):
 	
@@ -37,12 +38,16 @@ class Bot01:
 	def get_last_update(self):
 		get_result = self.get_updates()
 
-		if len(get_result) > 0:
+		if len(get_result) == 0:
+			raise NoUpdatesException()
+
+		elif len(get_result) > 0:
 			last_update = get_result[-1]
+
 		else:
 			last_update = get_result[len(get_result)-1]
 
-		if 'text' not in get_result['message']:
+		if 'text' not in last_update['message']:
 			raise NoUpdatesException()
 
 		return last_update
@@ -72,7 +77,7 @@ def main():
 		except NoUpdatesException as no:
 			continue
 		else:
-			print(len(last_update) + ' is size')
+			print('*** uid#' + str(last_update['update_id']) + ' -> ' + last_update['message']['text'])
 
 		last_update_id = last_update['update_id']
 		last_chat_text = last_update['message']['text']
