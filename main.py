@@ -70,7 +70,7 @@ def main():
 
 		try:
 			last_update = greet_bot.get_last_update()
-		except: NoUpdatesException as no:
+		except NoUpdatesException as no:
 			continue
 
 		last_update_id = last_update['update_id']
