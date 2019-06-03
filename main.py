@@ -38,6 +38,7 @@ class Bot01:
 
 	def get_last_update(self):
 		get_result = self.get_updates()
+		print(len(get_result))
 
 		if len(get_result) > 0:
 			last_update = get_result[-1]
