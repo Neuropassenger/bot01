@@ -72,7 +72,7 @@ def main():
 		except NoUpdatesException as no:
 			continue
 		else:
-			print(last_update)
+			print(len(last_update) + ' is size')
 
 		last_update_id = last_update['update_id']
 		last_chat_text = last_update['message']['text']
