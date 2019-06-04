@@ -8,9 +8,11 @@ greetings = ['хола', 'хэллоу', 'здравствуй', 'привет',
 invokers = greetings[:]
 invokers.append('bot01')
 
+
 @bot.message_handler(func=lambda message: True)
 def say_hi(message):
     if message.text.lower() in invokers:
         bot.reply_to(message, random.choice(greetings).capitalize() + ', ' + message.from_user.username + '!')
+
 
 bot.polling()
