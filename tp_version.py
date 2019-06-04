@@ -1,15 +1,4 @@
 # -*- coding: utf-8 -*-
-
-'''
-Бот для Telegram
-
-Version: 0.2.0
-- Исправлены все найденные баги после первого тестирования
-
-Version: 0.1.0
-- Программа реализована на ООП
-'''
-
 import requests
 import datetime
 import json
